@@ -8,7 +8,6 @@
 MemberBean member = (MemberBean) request.getAttribute("member");
 
 request.setAttribute("member", member);
-
 %>
 
 <%
@@ -22,9 +21,6 @@ if (member.getM_ID() == null) {
 
 <%
 }
-
-
-
 %>
 
 <!DOCTYPE html>
@@ -39,26 +35,34 @@ if (member.getM_ID() == null) {
 	position: relative;
 	left: 40%;
 }
-#tds{
-width: 150px;
+
+#tds {
+	width: 150px;
 }
-tr{
-height: 55px;
-}
-td{
-width: 120px;
-}
+
+
 </style>
 <body>
-	<h2 style="color: #cccccc" > 회원정보 확인페이지 </h2>
-	
-	<form id="cstyle">
-		<input type="hidden" name="M_ID" value="<%=member.getM_ID() %>" >
-		<table border="1">
+	<h2 style="color: #cccccc"  align="center" >회원정보 확인페이지</h2>
+
+	<form id="cstyle"    >
+		<input type="hidden" name="M_ID" value="<%=member.getM_ID()%>">
+		<table>
+
+			<tr style="background-color: #cccccc" height="2px;">
+				<td colspan="2"></td>
+
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+
+
+
 
 			<tr align="center">
 				<td>아이디 :</td>
-				<td id="tds" ><%=member.getM_ID()%></td>
+				<td id="tds"><%=member.getM_ID()%></td>
 			</tr>
 
 			<tr align="center">
@@ -84,12 +88,24 @@ width: 120px;
 			<tr align="center">
 				<td colspan="2"><a href="BookList.re"> 내 예약내역 확인하기 </a></td>
 			</tr>
+			
+			<tr>
+			<td> &nbsp; </td>
+			</tr>
+			
 
+
+
+
+			<tr style="background-color: #cccccc" height="2px;">
+				<td colspan="2"></td>
+
+			</tr>
 
 		</table>
-		<br>
-		<a onclick="location.href='MemberModify.me'" > 내정보 수정하기  </a>
-		
+		<br> <a onclick="location.href='MemberModify.me'"> [ 내정보 수정하기 ]
+		</a>
+
 	</form>
 
 </body>
