@@ -45,7 +45,7 @@ public class MemberDeleteAction implements Action {
 		System.out.println("세션 종료");
 		forward.setRedirect(true);
 		forward.setPath("./Main.jsp");
-
+		// github test
 		return forward;
 	}
 
