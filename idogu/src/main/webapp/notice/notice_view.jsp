@@ -4,6 +4,14 @@
 <%@ page import="net.notice.db.*" %>
 
 <%
+	// 관리자
+	String id = null;
+
+	if (session.getAttribute("id") != null) {
+		id = (String)session.getAttribute("id");
+	}
+
+	// 연동
 	NoticeBean board = (NoticeBean)request.getAttribute("boarddata");
 %>
 <!DOCTYPE html>
@@ -72,9 +80,14 @@
 		<tr align="center" valign="middle">
 			<td colspan="5">
 				<font size=2>
+					<a href="./BoardList.no">[목록]</a>&nbsp;&nbsp;
+					
+					<% if (id != null && id.equals("admin")) { %>
+					
 					<a href="./BoardModify.no?num=<%= board.getN_NUM() %>">[수정]</a>&nbsp;&nbsp;
 					<a href="./BoardDeleteAction.no?num=<%= board.getN_NUM() %>">[삭제]</a>&nbsp;&nbsp;
-					<a href="./BoardList.no">[목록]</a>&nbsp;&nbsp;
+					
+					<% } %>
 				</font>
 			</td>
 		</tr>

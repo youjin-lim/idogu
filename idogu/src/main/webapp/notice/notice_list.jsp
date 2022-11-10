@@ -6,6 +6,14 @@
 <%@ page import="net.notice.db.*" %>
 
 <%
+	// 관리자
+	String id = null;
+
+	if (session.getAttribute("id") != null) {
+		id = (String)session.getAttribute("id");
+	}
+	
+	// 페이지
 	List boardList = (List)request.getAttribute("boardlist");
 	int listcount = ((Integer)request.getAttribute("listcount")).intValue();
 	int nowpage = ((Integer)request.getAttribute("page")).intValue();
@@ -128,7 +136,13 @@
 	
 	<tr align="right">
 		<td colspan="5">
+
+			<% if (id != null && id.equals("admin")) { %>
+			
 			<a href="./BoardWrite.no">[글쓰기]</a>
+			
+			<% } %>
+			
 		</td>
 	</tr>
 	</table>
