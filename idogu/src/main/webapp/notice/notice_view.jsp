@@ -5,7 +5,8 @@
 
 <%
 	// 관리자
-	String id = null;
+	String id = "admin";
+//	String id = null;
 
 	if (session.getAttribute("id") != null) {
 		id = (String)session.getAttribute("id");
@@ -48,7 +49,7 @@
 			<td>
 				<table style="table-layout: fixed">
 					<tr>
-						<td valign="top">
+						<td valign="top" style="width: 650px; height: 350px;">
 							<%= board.getN_CONTENT() %>
 						</td>
 					</tr>

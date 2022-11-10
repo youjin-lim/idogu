@@ -7,7 +7,8 @@
 
 <%
 	// 관리자
-	String id = null;
+	String id = "admin";
+	// String id = null;
 
 	if (session.getAttribute("id") != null) {
 		id = (String)session.getAttribute("id");
@@ -102,21 +103,21 @@
 	<tr align="center" height="20">
 		<td colspan="6" style="font-family:Tohoma; font-size: 10pt;">
 			<% if (nowpage <= 1) { %>
-				[이전]&nbsp;
+				&nbsp;
 			<% } else { %>
 				<a href="./BoardList.no?page=<%= nowpage - 1 %>">[이전]</a>&nbsp;
 			<% } %>	
 			
 			<% for (int a = startpage; a <= endpage; a++) {
 				if (a == nowpage) {	%>
-					[<%= a %>]&nbsp;
+					<b><%= a %></b>
 				<% } else { %>
 					<a href="./BoardList.no?page=<%= a %>">[<%= a %>]</a>&nbsp;
 				<% } %>
 			<% } %>
 			
 			<% if (nowpage >= maxpage) { %>
-				[다음]
+				&nbsp;
 			<% } else { %>
 				<a href="./BoardList.no?page=<%= nowpage + 1 %>">[다음]</a>&nbsp;
 			<% } %>

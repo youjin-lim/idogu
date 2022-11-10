@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MVC 게시판</title>
+<title>공지사항</title>
 <script>
 	function addBoard() {
 		boardform.submit();
@@ -43,7 +44,7 @@
 					<div align="center">내용</div>
 				</td>
 				<td>
-					<textarea name="N_CONTENT" cols="67" rows="15"></textarea>
+					<textarea rows="10" cols="30" name="N_CONTENT" style="width: 650px; height: 350px;"></textarea>
 				</td>
 			</tr>
 			

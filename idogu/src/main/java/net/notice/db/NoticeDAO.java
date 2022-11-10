@@ -118,13 +118,8 @@ public class NoticeDAO {
 	
 	// 리스트 - 글 목록 보기
 	public List getBoardList(int page, int limit, String cond) {
-		String board_list_sql = "select * from (select rownum rnum, n_num, m_id, n_sub, n_content, n_file, n_readcount, n_date from notice order by n_num DESC) where rnum >= ? and rnum <= ? ";
 
-		String board_list_sql_fmt = "select * from (select rownum rnum, n_num, m_id, n_sub, n_content, n_file, n_readcount, n_date from (select * from notice where %s)) where rnum >= ? and rnum <= ? ";
-
-		if (cond != null && !cond.equals("")) {
-			board_list_sql = String.format(board_list_sql_fmt, cond);
-		}
+		String board_list_sql = "select * from (select rownum rnum, n_num, m_id, n_sub, n_content, n_file, n_readcount, n_date from (select * from notice order by n_num desc)) where rnum >= ? and rnum <= ? ";
 
 		List list = new ArrayList();
 
