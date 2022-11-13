@@ -52,11 +52,11 @@ public class MemberDAO {
 				rs.next();
 
 				MemberBean mb = new MemberBean();
-				mb.setM_ID(rs.getString("M_ID"));
-				mb.setM_PW(rs.getString("M_PW"));
-				mb.setM_NAME(rs.getString("M_NAME"));
-				mb.setM_TEL(rs.getInt("M_TEL"));
-				mb.setM_EMAIL(rs.getString("M_EMAIL"));
+				mb.setM_id(rs.getString("M_ID"));
+				mb.setM_pw(rs.getString("M_PW"));
+				mb.setM_name(rs.getString("M_NAME"));
+				mb.setM_tel(rs.getString("M_TEL"));
+				mb.setM_email(rs.getString("M_EMAIL"));
 				return mb;
 
 			} catch (Exception ex) {
@@ -82,10 +82,10 @@ public class MemberDAO {
 			try {
 				con = ds.getConnection();
 				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, modifyMember.getM_PW());
-				pstmt.setInt(2, modifyMember.getM_TEL());
-				pstmt.setString(3, modifyMember.getM_EMAIL());
-				pstmt.setString(4, modifyMember.getM_ID());
+				pstmt.setString(1, modifyMember.getM_pw());
+				pstmt.setString(2, modifyMember.getM_tel());
+				pstmt.setString(3, modifyMember.getM_email());
+				pstmt.setString(4, modifyMember.getM_id());
 				pstmt.executeUpdate();
 
 				return true;

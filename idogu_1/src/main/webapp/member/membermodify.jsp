@@ -119,7 +119,7 @@ MemberBean member = (MemberBean) request.getAttribute("member");
 			<tr align="center">
 				<td>아이디 :</td>
 				<td align="left"><input style="background-color: #E4E4E4;"
-					type="text" name="M_ID" value="<%=member.getM_ID()%>"
+					type="text" name="M_ID" value="<%=member.getM_id()%>"
 					readonly="readonly"></td>
 
 
@@ -128,7 +128,7 @@ MemberBean member = (MemberBean) request.getAttribute("member");
 			<tr align="center">
 				<td>비밀번호 :</td>
 				<td align="left"><input name="M_PW" type="password"
-					value="<%=member.getM_PW()%> " onchange="isSame()"></td>
+					value="<%=member.getM_pw()%> " onchange="isSame()"></td>
 			</tr>
 
 			<tr align="center">
@@ -146,7 +146,7 @@ MemberBean member = (MemberBean) request.getAttribute("member");
 			<tr align="center">
 				<td>이름 :</td>
 				<td align="left"><input style="background-color: #E4E4E4;"
-					type="text" name="M_NAME" value="<%=member.getM_NAME()%>"
+					type="text" name="M_NAME" value="<%=member.getM_name()%>"
 					readonly="readonly"></td>
 
 			</tr>
@@ -154,13 +154,13 @@ MemberBean member = (MemberBean) request.getAttribute("member");
 			<tr align="center">
 				<td>전화번호 :</td>
 				<td align="left"><input name="M_TEL" type="text"
-					value="<%=member.getM_TEL()%>"></td>
+					value="<%=member.getM_tel()%>"></td>
 			</tr>
 
 			<tr align="center">
 				<td>이메일 주소 :</td>
 				<td align="left"><input name="M_EMAIL" type="text"
-					value="<%=member.getM_EMAIL()%>"></td>
+					value="<%=member.getM_email()%>"></td>
 			</tr>
 
 			<tr>

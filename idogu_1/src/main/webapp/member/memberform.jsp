@@ -11,7 +11,7 @@ request.setAttribute("member", member);
 %>
 
 <%
-if (member.getM_ID() == null) {
+if (member.getM_id() == null) {
 %>
 <script type="text/javascript">
 	alert('회원 전용 공간입니다. 로그인 후 이용하세요');
@@ -46,7 +46,7 @@ if (member.getM_ID() == null) {
 	<h2 style="color: #cccccc"  align="center" >회원정보 확인페이지</h2>
 
 	<form id="cstyle"    >
-		<input type="hidden" name="M_ID" value="<%=member.getM_ID()%>">
+		<input type="hidden" name="M_ID" value="<%=member.getM_id()%>">
 		<table>
 
 			<tr style="background-color: #cccccc" height="2px;">
@@ -62,27 +62,27 @@ if (member.getM_ID() == null) {
 
 			<tr align="center">
 				<td>아이디 :</td>
-				<td id="tds"><%=member.getM_ID()%></td>
+				<td id="tds"><%=member.getM_id()%></td>
 			</tr>
 
 			<tr align="center">
 				<td>비밀번호 :</td>
-				<td><%=member.getM_PW()%></td>
+				<td><%=member.getM_pw()%></td>
 			</tr>
 
 			<tr align="center">
 				<td>이름 :</td>
-				<td><%=member.getM_NAME()%></td>
+				<td><%=member.getM_name()%></td>
 			</tr>
 
 			<tr align="center">
 				<td>전화번호 :</td>
-				<td><%=member.getM_TEL()%></td>
+				<td><%=member.getM_tel()%></td>
 			</tr>
 
 			<tr align="center">
 				<td>이메일 주소 :</td>
-				<td><%=member.getM_EMAIL()%></td>
+				<td><%=member.getM_email()%></td>
 			</tr>
 
 			<tr align="center">
