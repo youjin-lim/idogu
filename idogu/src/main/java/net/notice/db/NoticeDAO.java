@@ -256,8 +256,10 @@ public class NoticeDAO {
 		}
 		return false;
 		
-   }
-
+	}
+	
+	
+	// 본문 - 삭제
 	public boolean boardDelete(int num) {
 		
 		String sql_delete_sql = "delete from notice where n_num = ?";
@@ -286,5 +288,6 @@ public class NoticeDAO {
 		return false;
 		
 	}
+	
 
 }

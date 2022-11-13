@@ -31,9 +31,6 @@
 		
 		<tr>
 			<td>
-				<div align="center">제목</div>
-			</td>
-			<td>
 				<%= board.getN_SUB() %>
 			</td>
 		</tr>
@@ -44,12 +41,15 @@
 		
 		<tr>
 			<td>
-				<div align="center">내용</div>
-			</td>
-			<td>
 				<table style="table-layout: fixed">
 					<tr>
 						<td valign="top" style="width: 650px; height: 350px;">
+							<% if (!(board.getN_FILE() == null)) { %>
+							<div style="text-align : center;">
+								<img src="./noticeupload/<%= board.getN_FILE() %>">
+							</div>
+							<% } %>
+							
 							<%= board.getN_CONTENT() %>
 						</td>
 					</tr>
@@ -57,25 +57,8 @@
 			</td>
 		</tr>
 		
-		<tr>
-			<td>
-				<div align="center">파일 첨부</div>
-			</td>
-			<td>
-				<% if (!(board.getN_FILE() == null)) { %>
-				<a href="./noticeupload/<%= board.getN_FILE() %>">
-					<%= board.getN_FILE() %>
-				</a>
-				<% } %>
-			</td>
-		</tr>
-		
 		<tr bgcolor="#cccccc">
 			<td colspan="2" style="height: 1px;"></td>
-		</tr>
-		
-		<tr>
-			<td colspan="2">&nbsp;</td>
 		</tr>
 		
 		<tr align="center" valign="middle">

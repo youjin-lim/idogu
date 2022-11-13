@@ -22,130 +22,263 @@
 	int startpage = ((Integer)request.getAttribute("startpage")).intValue();
 	int endpage = ((Integer)request.getAttribute("endpage")).intValue();
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
-<script type="text/javascript">
-	function submitSrchForm() {
-		document.srchForm.srchKey.value = document.srchForm.srchKey.value.trim();
-		document.srchForm.submit();
-	}
-	
-	function resetSrchForm() {
-		document.srchForm.srchFlds[0].selected = true;
-		document.srchForm.srchKey.value = "";
-	}
-</script>
+
+<style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+section.notice {
+  padding: 80px 0;
+}
+
+.page-title {
+  margin-bottom: 60px;
+}
+
+.page-title h3 {
+  font-size: 28px;
+  color: #333333;
+  font-weight: 400;
+  text-align: left;
+}
+
+.board-table {
+  font-size: 13px;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.board-table a {
+  color: #333;
+  display: inline-block;
+  line-height: 1.4;
+  word-break: break-all;
+  vertical-align: middle;
+}
+
+.board-table a:hover {
+  text-decoration: underline;
+}
+
+.board-table th {
+  text-align: center;
+}
+
+.board-table .th-num {
+  width: 100px;
+  text-align: center;
+}
+
+.board-table .th-date {
+  width: 200px;
+}
+
+.board-table th, .board-table td {
+  padding: 14px 0;
+}
+
+.board-table tbody td {
+  border-top: 1px solid #e7e7e7;
+  text-align: center;
+}
+
+.board-table tbody th {
+  padding-left: 28px;
+  padding-right: 14px;
+  border-top: 1px solid #e7e7e7;
+  text-align: left;
+}
+
+.board-table tbody th p{
+  display: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0 30px;
+  font-size: 15px;
+  font-weight: 400;
+  background: transparent;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn-dark {
+  background: #555;
+  color: #fff;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+  background: #373737;
+  border-color: #373737;
+  color: #fff;
+}
+
+.btn-dark {
+  background: #555;
+  color: #fff;
+}
+
+.btn-dark:hover, .btn-dark:focus {
+  background: #373737;
+  border-color: #373737;
+  color: #fff;
+}
+
+/* reset */
+
+* {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.blind {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+}
+</style>
+
 </head>
 
 <body>
-	<!-- 게시판 리스트 -->
-	<table>
+<section class="notice">
+
 	<%
 		if (listcount > 0) {
 	%>
-	
-	<tr align="center" valign="middle">
-		<td colspan="5">공지사항 게시판</td>
-	</tr>
-	
-	<tr align="center" valign="middle" bordercolor="#333333">
-		<td style="font-family: Tahoma; font-size: 10pt;" width="10%" height="26">
-			<div align="center">번호</div>
-		</td>
+
+	<div class="page-title">
+		<div class="container">
+			<h3>공지사항</h3>
+		</div>
+	</div>
 		
-		<td style="font-family: Tahoma; font-size: 10pt;" width="60%" height="26">
-			<div align="center">제목</div>
-		</td>
-		
-		<td style="font-family: Tahoma; font-size: 10pt;" width="20%" height="26">
-			<div align="center">작성일</div>
-		</td>
-		
-		<td style="font-family: Tahoma; font-size: 10pt;" width="10%" height="26">
-			<div align="center">조회수</div>
-		</td>
-	</tr>
-	
+	<div id="board-list">
+        <div class="container">
+            <table class="board-table">
+                <thead>
+                <tr style="background-color: #f6f6f6">
+                    <th scope="col" class="th-num">번호</th>
+                    <th scope="col" class="th-title">제목</th>
+                    <th scope="col" class="th-date">등록일</th>
+                    <th scope="col" class="th-num">조회수</th>
+                </tr>
+                </thead>
+                
 	<%
 		for (int i = 0; i < boardList.size(); i++) {
 			NoticeBean bl = (NoticeBean)boardList.get(i);
 	%>
-	
-	<tr align="center" valign="middle" bordercolor="#333333"
-		onmouseover="this.style.backgroundColor='#F8F8F8'"
-		onmouseout="this.style.backgroundColor=''">
-	
-		<td height="23" style="font-family:Tahoma; font-size: 10pt;">
-			<%= bl.getN_NUM() %>
-		</td>
-	
-		<td style="font-family:Tahoma; font-size: 10pt;">
-			<div align="left">
-				<a href="./BoardDetailAction.no?num=<%= bl.getN_NUM() %>"><%= bl.getN_SUB() %></a>
-			</div>
-		</td>
-	
-		<td style="font-family:Tahoma; font-size: 10pt;">
-			<div align="center"><%= bl.getN_DATE() %></div>
-		</td>
-	
-		<td style="font-family:Tahoma; font-size: 10pt;">
-			<div align="center"><%= bl.getN_READCOUNT() %></div>
-		</td>
-	</tr>
-	
+                
+                <tbody>
+                <tr>
+                    <td><%= bl.getN_NUM() %></td>
+                    <th>
+                      <a href="./BoardDetailAction.no?num=<%= bl.getN_NUM() %>"><%= bl.getN_SUB() %></a>
+                    </th>
+                    <td><%= bl.getN_DATE() %></td>
+                    <td><%= bl.getN_READCOUNT() %></td>
+                </tr>
+                </tbody>
+                
 	<%
 		}
 	%>
-	<tr align="center" height="20">
-		<td colspan="6" style="font-family:Tohoma; font-size: 10pt;">
-			<% if (nowpage <= 1) { %>
-				&nbsp;
-			<% } else { %>
-				<a href="./BoardList.no?page=<%= nowpage - 1 %>">[이전]</a>&nbsp;
-			<% } %>	
-			
-			<% for (int a = startpage; a <= endpage; a++) {
-				if (a == nowpage) {	%>
-					<b><%= a %></b>
-				<% } else { %>
-					<a href="./BoardList.no?page=<%= a %>">[<%= a %>]</a>&nbsp;
-				<% } %>
-			<% } %>
-			
-			<% if (nowpage >= maxpage) { %>
-				&nbsp;
-			<% } else { %>
-				<a href="./BoardList.no?page=<%= nowpage + 1 %>">[다음]</a>&nbsp;
-			<% } %>
-		</td>
-	</tr>
 	
+				<tr align="center" height="20">
+					<td colspan="6" style="font-family:Tohoma; font-size: 10pt;">
+						<% if (nowpage <= 1) { %>
+							&nbsp;
+						<% } else { %>
+							<a href="./BoardList.no?page=<%= nowpage - 1 %>">[이전]</a>&nbsp;
+						<% } %>	
+			
+						<% for (int a = startpage; a <= endpage; a++) {
+							if (a == nowpage) {	%>
+								<b><%= a %></b>
+							<% } else { %>
+								<a href="./BoardList.no?page=<%= a %>">[<%= a %>]</a>&nbsp;
+							<% } %>
+						<% } %>
+			
+						<% if (nowpage >= maxpage) { %>
+							&nbsp;
+						<% } else { %>
+							<a href="./BoardList.no?page=<%= nowpage + 1 %>">[다음]</a>&nbsp;
+						<% } %>
+					</td>
+				</tr>
+				
 	<% } else { %>
-	
-	<tr align="center" valign="middle">
-		<td colspan="4">공지사항</td>
-		<td align="right">
-			<font size="2">등록된 글이 없습니다.</font>
-		</td>
-	</tr>
-	
+				
+				<tr align="center" valign="middle">
+					<td colspan="4">공지사항</td>
+					<td align="right">
+						<font size="2">등록된 글이 없습니다.</font>
+					</td>
+				</tr>
+				
 	<% } %>
-	
-	<tr align="right">
-		<td colspan="5">
+				
+            </table>
+        </div>
+    </div>
+    
+    <section>
+    	<div>
 
 			<% if (id != null && id.equals("admin")) { %>
 			
-			<a href="./BoardWrite.no">[글쓰기]</a>
+				<a href="./BoardWrite.no">[글쓰기]</a>
 			
 			<% } %>
-			
-		</td>
-	</tr>
-	</table>
+		</div>
+	</section>
+</section>
 </body>
 </html>

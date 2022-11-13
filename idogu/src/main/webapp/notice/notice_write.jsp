@@ -10,7 +10,11 @@
 	function addBoard() {
 		boardform.submit();
 	}
+
 </script>
+
+<!-- 에디터 -->
+<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -22,37 +26,30 @@
 			</tr>
 			
 			<tr>
-				<td>
-					<div align="center">작성자</div>
-				</td>
-				<td>
+				<td colspan="2">
 					<input name="M_ID" type="text" size="10" maxlength="10" value=""/>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>
-					<div align="center">제목</div>
-				</td>
-				<td>
-					<input name="N_SUB" type="text" size="50" maxlength="100" value=""/>
+				<td colspan="2">
+					<input name="N_SUB" type="text" style="width:650px;" maxlength="50" value=""/>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>
-					<div align="center">내용</div>
-				</td>
-				<td>
-					<textarea rows="10" cols="30" name="N_CONTENT" style="width: 650px; height: 350px;"></textarea>
+				<td colspan="2">
+					<textarea class="form-control" id="p_content" rows="10" cols="30" name="N_CONTENT" style="width: 650px;"></textarea>
+						<script type="text/javascript">
+							CKEDITOR.replace('p_content'
+										, {height: 500                                                  
+							});
+						</script>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>
-					<div align="center">파일 첨부</div>
-				</td>
-				<td>
+				<td colspan="2">
 					<input name="N_FILE" type="file"/>
 				</td>
 			</tr>

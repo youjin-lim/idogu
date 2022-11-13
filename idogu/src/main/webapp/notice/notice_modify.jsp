@@ -16,6 +16,9 @@
 		modifyform.submit();
 	}
 </script>
+
+<!-- 에디터 -->
+<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -33,7 +36,7 @@
 					<div align="center">제목</div>
 				</td>
 				<td>
-					<input name="N_SUB" type="text" size="50" maxlength="100"
+					<input name="N_SUB" type="text" style="width:650px;" maxlength="50"
 		 				value="<%= board.getN_SUB() %>" />
 				</td>
 			</tr>
@@ -43,7 +46,12 @@
 					<div align="center">내용</div>
 				</td>
 				<td>
-					<textarea name="N_CONTENT" cols="67" rows="15"><%= board.getN_CONTENT() %></textarea>
+					<textarea id="p_content" name="N_CONTENT" cols="67" rows="15" style="width: 650px;"><%= board.getN_CONTENT() %></textarea>
+						<script type="text/javascript">
+							CKEDITOR.replace('p_content'
+										, {height: 500                                                  
+							});
+						</script>
 				</td>
 			</tr>
 			
