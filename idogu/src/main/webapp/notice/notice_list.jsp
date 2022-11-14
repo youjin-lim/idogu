@@ -152,6 +152,15 @@ section.notice {
   color: #fff;
 }
 
+.zero {
+  color: #333333;
+  font-size: 13px;
+  text-align: center;
+  width: 90%;
+  line-height: 3.5;
+
+}
+
 /* reset */
 
 * {
@@ -229,30 +238,6 @@ section.notice {
 	<%
 		}
 	%>
-	
-				<tr align="center" height="20">
-					<td colspan="6" style="font-family:Tohoma; font-size: 10pt;">
-						<% if (nowpage <= 1) { %>
-							&nbsp;
-						<% } else { %>
-							<a href="./BoardList.no?page=<%= nowpage - 1 %>">[이전]</a>&nbsp;
-						<% } %>	
-			
-						<% for (int a = startpage; a <= endpage; a++) {
-							if (a == nowpage) {	%>
-								<b><%= a %></b>
-							<% } else { %>
-								<a href="./BoardList.no?page=<%= a %>">[<%= a %>]</a>&nbsp;
-							<% } %>
-						<% } %>
-			
-						<% if (nowpage >= maxpage) { %>
-							&nbsp;
-						<% } else { %>
-							<a href="./BoardList.no?page=<%= nowpage + 1 %>">[다음]</a>&nbsp;
-						<% } %>
-					</td>
-				</tr>
 				
 	<% } else { %>
 				
@@ -266,19 +251,44 @@ section.notice {
 	<% } %>
 				
             </table>
+            
+            <table class="container">
+				<tr class="zero">
+					<td colspan="6">
+						<% if (nowpage <= 1) { %>
+							&nbsp;
+						<% } else { %>
+							<a href="./BoardList.no?page=<%= nowpage - 1 %>">[이전]</a>&nbsp;
+						<% } %>	
+			
+						<% for (int a = startpage; a <= endpage; a++) {
+							if (a == nowpage) {	%>
+								<b><%= a %></b>
+							<% } else { %>
+								<a href="./BoardList.no?page=<%= a %>"><%= a %></a>&nbsp;
+							<% } %>
+						<% } %>
+			
+						<% if (nowpage >= maxpage) { %>
+							&nbsp;
+						<% } else { %>
+							<a href="./BoardList.no?page=<%= nowpage + 1 %>">[다음]</a>&nbsp;
+						<% } %>
+					</td>
+				</tr>
+				
+				<tr class="zero">
+					<td>
+						<% if (id != null && id.equals("admin")) { %>
+			
+							<a href="./BoardWrite.no">[글쓰기]</a>
+			
+						<% } %>
+					</td>
+				</tr>
+			</table>
         </div>
     </div>
-    
-    <section>
-    	<div>
-
-			<% if (id != null && id.equals("admin")) { %>
-			
-				<a href="./BoardWrite.no">[글쓰기]</a>
-			
-			<% } %>
-		</div>
-	</section>
 </section>
 </body>
 </html>
