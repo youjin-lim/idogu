@@ -9,6 +9,60 @@ DROP TABLE Notice CASCADE CONSTRAINTS;
 
 
 
+CREATE TABLE board
+(
+   -- 게시글 기본 넘버 
+   b_num  number NOT NULL,
+   -- 커뮤니티 글 제목 
+   b_sub varchar2(50) NOT NULL,
+   -- 커뮤니티 내용 
+   b_content varchar2(1000) NOT NULL,
+   --  커뮤니티 게시글 작성 날짜 
+   b_date date DEFAULT sysdate,
+   b_readcount number,
+   -- 회원 아이디 
+   b_id varchar2(20) NOT NULL,
+   b_re_ref number,
+   b_re_lev number,
+   b_re_seq number,
+   PRIMARY KEY (b_num )
+);
+
+
+
+CREATE TABLE mem
+(
+   -- 회원 아이디 
+   m_id varchar2(20) NOT NULL,
+   -- 맴버 비밀번호 
+   m_pw varchar2(20) NOT NULL,
+   -- 사용자 이름 
+   m_name varchar2(30) NOT NULL,
+   -- 전화번호 
+   m_tel number(20) NOT NULL,
+   -- 이메일
+   m_email varchar2(50) NOT NULL,
+   PRIMARY KEY (m_id)
+);
+
+
+
+insert into mem values('korea','123','홍길동',010123123,'koko@naver.com');
+
+select * from men;
+
+ALTER TABLE board
+   ADD FOREIGN KEY (b_id)
+   REFERENCES mem (m_id)
+;
+
+select * from board;
+
+
+
+
+
+
 
 /* Create Tables */
 
