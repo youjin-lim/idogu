@@ -17,14 +17,20 @@ CREATE TABLE mem(
    m_id varchar2(20) NOT NULL,
    m_pw varchar2(20) NOT NULL,
    m_name varchar2(30) NOT NULL,
-   m_tel number(20) NOT NULL,
+   m_tel varchar2(20) NOT NULL,
    m_email varchar2(50) NOT NULL,
    PRIMARY KEY (m_id)
 );
+
+drop table mem purge; 
+drop table board purge;
 
 -- board와 member 관계 설정
 ALTER TABLE board
    ADD FOREIGN KEY (b_id)
    REFERENCES mem (m_id)
 ;
+
+select * from mem;
+
 
