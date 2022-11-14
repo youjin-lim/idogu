@@ -31,6 +31,14 @@ ALTER TABLE board
    REFERENCES mem (m_id)
 ;
 
-select * from mem;
+alter table board 
+add foreign key(b_id)
+references mem(m_id) 
+on delete cascade;
 
 
+insert into mem values(1, 1, 1, 1, 1);
+insert into mem values('admin', 100, 100, 100, 100);
+
+delete from mem where m_id = '1';
+select * from mem where m_id = '1';
