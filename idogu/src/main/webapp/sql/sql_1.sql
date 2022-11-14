@@ -9,7 +9,7 @@ CREATE TABLE board(
    b_re_ref number,
    b_re_lev number,
    b_re_seq number,
-   PRIMARY KEY (b_num )
+   PRIMARY KEY (b_num)
 );
 
 
@@ -26,11 +26,6 @@ drop table mem purge;
 drop table board purge;
 
 -- board와 member 관계 설정
-ALTER TABLE board
-   ADD FOREIGN KEY (b_id)
-   REFERENCES mem (m_id)
-;
-
 alter table board 
 add foreign key(b_id)
 references mem(m_id) 
