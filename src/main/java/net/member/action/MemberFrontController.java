@@ -23,9 +23,71 @@ public class MemberFrontController extends HttpServlet implements javax.servlet.
 		String command = RequestURI.substring(contextPath.length());
 		ActionForward forward = null;
 		Action action = null;
+		
+		if(command.equals("/MemberLogin.me")) { //MemberLogin.me가 들어오면 loginform.jsp를 실행 
+			
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/loginform.jsp");
+		}
+
+		else if(command.equals("/MemberJoin.me")) { //MemberJoin.me가 들어오면 joinform.jsp 실행
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/joinform.jsp");
+		}
+		
+		else if(command.equals("/MemberAgree.me")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/agreeform.jsp");
+		}
+		
+		else if(command.equals("/MemberLoginAction.me")) {
+			System.out.println("액션");
+			action = new MemberLoginAction();
+			try {
+				forward = action.execute(request, response);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		
+		else if(command.equals("/MemberLogoutAction.me")) {
+			action = new MemberLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		else if(command.equals("/MemberJoinAction.me")) {
+			action = new MemberJoinAction();
+			try {
+				forward = action.execute(request, response);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		else if(command.equals("/MemberListAction.me")) {
+			action = new MemberListAction();
+			try {
+				forward = action.execute(request, response);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		// 회원 상세 정보 조회
-		if (command.equals("/MemberViewAction.me")) {
+		else if (command.equals("/MemberViewAction.me")) {
 
 			
 			action = new MemberViewAction(); // memberform.jsp로 가는 경로 설정해 준다.
@@ -70,10 +132,10 @@ public class MemberFrontController extends HttpServlet implements javax.servlet.
 		
 		
 		
-		
 
 		// 회원 탈퇴
 		else if (command.equals("/MemberDelete.me")) {
+			System.out.println("회원 탈퇴 controll");
 			action = new MemberDeleteAction();
 			try {
 				forward = action.execute(request, response);
@@ -85,20 +147,83 @@ public class MemberFrontController extends HttpServlet implements javax.servlet.
 			// 해야할일 : 세션삭제, 탈퇴되었다고 메세지 날리기
 
 		}
+		
+		else if(command.equals("/FindID.me")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/findid.jsp");
+		}
+		
+		else if(command.equals("/FindPW.me")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("./member/findpw.jsp");
+		}
+		
+		
+		else if(command.equals("/FindIDAction.me")) {
+			action = new FindIDAction();
+			try {
+				forward = action.execute(request, response);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
 
+		else if(command.equals("/FindPWAction.me")) {
+			action = new FindPWAction();
+			try {
+				forward = action.execute(request, response);
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		   else if (command.equals("/adminview.me")) {
+		         action = new adminviewAction();
+		         try {
+		            forward = action.execute(request, response);
+
+		            System.out.println("관리자용 페이지 ");
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		         
+		         
+		      }
+		
+		   else if (command.equals("/AdminDeleteAction.me")) {
+		         action = new AdminDeleteAction();
+		         try {
+		            forward = action.execute(request, response);
+
+		         } catch (Exception e) {
+		            e.printStackTrace();
+		         }
+		         
+		         
+		   }
+		
+		   else if (command.equals("/Info.me")) {
+			   forward = new ActionForward();
+			   forward.setRedirect(false);
+			   forward.setPath("./home/info.jsp");
+		         
+		         
+		   }
+		
+		
 		if (forward != null) {
-			
-			System.out.println(1111111);
 			
 			if (forward.isRedirect()) {
 				response.sendRedirect(forward.getPath());
 			} else {
-				System.out.println(22222);
 				
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
 				dispatcher.forward(request, response);
-				System.out.println(333333);
 			}
 		}
 

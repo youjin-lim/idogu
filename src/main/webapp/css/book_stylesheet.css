@@ -1,0 +1,108 @@
+body{
+		background-image :url('../images/bgdog.png');
+		background-attachment: fixed; 
+		background-size: cover; 
+		height: 100vh;
+	}
+#divbg1{
+   position: absolute;
+   background-color: white;
+   top: 20%;
+   left: 33%;
+   right: 30%;
+   height: 600px;
+   width: 700px;
+   padding-top : 40px;
+   border-radius: 7px;
+}
+#divbg1_1{
+	position:relative;
+	margin-left:auto;
+	margin-right:auto;
+}
+#tb_book1{
+	position:relative;
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+}
+input#K_SMALL, #K_MEDIUM, #K_BIG{
+		width:40px;
+	}
+div#sub{
+	font-size:1.3em
+}
+div#divbg2 {
+	background-color: white;
+	height: 1550px;
+	width: 900px;
+	border-radius: 7px;
+	margin:auto;
+	margin-top: 50px;
+	padding: 40px;
+}
+
+#tb_book2 {
+	position: relative;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#tb_book2_1 {
+	position: relative;
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.small_1, .small_2, .small_3, .small_4 {
+	width: 60px;
+	height: 60px;
+}
+#divbg3 {
+	background-color: white;
+	padding-top: 40px;
+	margin: auto;
+	height : 1100px;
+	width : 900px;
+	border-radius: 7px;
+	margin-top: 40px;
+}
+#divbg3_1 {
+	position: relative;
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#tb_book3 {
+	position: relative;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 30px;
+	padding-right : 30px;
+	
+}
+input#K_DOG,#K_DOGNAME,#K_AGE,#K_KG,#K_CONTENT{
+ width:350px;
+}
+.divbg4{
+	position: absolute;
+	background-color: white;
+   top: 20%;
+   left: 30%;
+   right: 30%;
+ height: 500px;
+   width: 700px;
+   padding-top : 40px;
+   border-radius: 7px;
+}
+
+.tb_book4{
+	position:relative;
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+}

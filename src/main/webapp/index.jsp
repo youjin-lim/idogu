@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; URL=<%= request.getContextPath() %>/MemberViewAction.me">
+<meta http-equiv="refresh" content="0; URL=<%= request.getContextPath() %>/Main.re">
 </head>
 <body>
 

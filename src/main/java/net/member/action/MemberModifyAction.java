@@ -29,10 +29,10 @@ public class MemberModifyAction implements Action {
 	
 		try {
 			// 수정한 정보 가져오기 
-			member.setM_id(request.getParameter("M_ID"));
-			member.setM_pw(request.getParameter("M_PW"));
-			member.setM_tel(request.getParameter("M_TEL"));
-			member.setM_email(request.getParameter("M_EMAIL"));
+			member.setM_ID(request.getParameter("M_ID"));
+			member.setM_PW(request.getParameter("M_PW"));
+			member.setM_TEL(request.getParameter("M_TEL"));
+			member.setM_EMAIL(request.getParameter("M_EMAIL"));
 		
 			
 			result = memberdao.memberModify(member); // 수정 쿼리 진행

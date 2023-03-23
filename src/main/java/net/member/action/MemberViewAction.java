@@ -18,16 +18,13 @@ public class MemberViewAction implements Action {
 		MemberDAO memberdao = new MemberDAO();
 		MemberBean member = new MemberBean();
 		
-	    session.setAttribute("id",  "korea"); //테스트용 작성줄 
-		
 		String id = (String) session.getAttribute("id");
 		
 		if(id == null) {
 			forward.setRedirect(true);
 			forward.setPath("./MemberLogin.me");
 		}
-		
-		
+	
 		member = memberdao.getDetailMember(id);
 		
 		if(member == null) {

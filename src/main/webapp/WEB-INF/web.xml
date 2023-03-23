@@ -35,7 +35,7 @@
   </servlet-mapping>
   
 
-  <servlet>
+  <servlet> 
      <servlet-name>BoardFrontController</servlet-name>
      <servlet-class>net.board.action.BoardFrontController</servlet-class>
   </servlet>
